@@ -1,0 +1,9 @@
+  <div class="all-goal-box">
+    <app-daily-goal *ngFor="let goal of allGoals; let i = index"
+    [getGoal]="goal"
+    [currIndex]="i"
+    [totalTask]="allGoals.length"
+    (sendGoal)="addNewGoal($event)"
+    (sendIndex)="removeGoal($event)"
+    ></app-daily-goal>
+  </div>

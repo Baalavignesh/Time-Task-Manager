@@ -1,0 +1,56 @@
+<div class="card text-center card-size" *ngIf="getGoal.index == 0">
+  <div class="card-header">Task {{ currIndex }}</div>
+  <div class="card-body">
+    <div class="input-group">
+      <div class="input-group-prepend">
+        <span class="input-group-text">Enter Task</span>
+      </div>
+      <textarea
+        class="form-control"
+        rows="1"
+        aria-label="With textarea"
+        #goalDescription
+      ></textarea>
+    </div>
+    <h5 class="card-title"></h5>
+    <div>
+      <label class="radio-inline m-1"
+        ><input
+          type="radio"
+          class="m-1"
+          name="optradio"
+          value="big"
+          (change)="onItemChange($event)"
+        />Big Goal</label
+      >
+      <label class="radio-inline m-1"
+        ><input
+          type="radio"
+          class="m-1"
+          name="optradio"
+          [checked]="true"
+          value="small"
+          (change)="onItemChange($event)"
+        />Small Goal</label
+      >
+    </div>
+    <button (click)="addGoal()" class="btn btn-primary m-2">Add Goal</button>
+  </div>
+
+  <div class="card-footer text-muted">Start the journey to victory here</div>
+</div>
+
+<div class="card text-center card-size" *ngIf="getGoal.index != 0">
+  <div class="card-header">Task {{ currIndex }}</div>
+  <div class="card-body">
+    <h5 class="card-title">{{ getGoal.index }}</h5>
+
+    <p class="card-text">
+      {{ getGoal.task }}
+    </p>
+    <button class="btn btn-success m-2" (click)="taskCompleted(getGoal.index)">Task Done</button>
+    <button class="btn btn-danger m-2">Delete</button>
+  </div>
+
+  <div class="card-footer text-muted">{{ getGoal.time }}</div>
+</div>
